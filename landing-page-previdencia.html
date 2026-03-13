@@ -173,6 +173,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     animation: fadeUp 0.9s ease 0.65s forwards;
   }
 
+  .hero-trust-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.8s forwards;
+  }
+
+  .hero-trust-strip span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.32);
+    letter-spacing: 0.3px;
+  }
+
+  .hero-trust-strip .trust-sep {
+    color: rgba(255,255,255,0.15);
+  }
+
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -724,10 +745,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* ---- RESPONSIVE ---- */
   @media (max-width: 900px) {
-    header { padding: 16px 24px; }
+    header { padding: 16px 20px; }
     .hero { padding: 100px 24px 60px; }
     .section-inner { padding: 72px 24px; }
     .context-grid { grid-template-columns: 1fr; gap: 40px; }
+    .context-highlight { padding: 24px; }
+    .stf-verdict { flex-direction: column; gap: 12px; padding: 24px; }
     .elegibility-grid { grid-template-columns: 1fr; }
     .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
     .process-steps::before { display: none; }
@@ -736,12 +759,184 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-oab { text-align: left; }
     .cta-inner { padding: 72px 24px; }
     footer { padding: 40px 24px; }
-    .disclaimer-strip { padding: 12px 24px; }
+    .disclaimer-strip { padding: 12px 20px; }
+    .hero-sub { font-size: 16px; }
   }
 
   @media (max-width: 600px) {
+    html { font-size: 16px; }
+    header { padding: 14px 16px; }
+    .header-cta { font-size: 11px; padding: 9px 14px; letter-spacing: 0.8px; }
+    .logo-img { height: 44px; }
+    .hero {
+      min-height: auto;
+      align-items: flex-start;
+      padding: 88px 20px 52px;
+    }
+    .hero h1 { font-size: clamp(36px, 9vw, 48px); }
+    .hero-sub { font-size: 15px; margin-bottom: 32px; }
+    .btn-secondary { display: none; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 0; }
+    .btn-primary { width: 100%; justify-content: center; }
+    .section-inner { padding: 56px 20px; }
+    .cta-inner { padding: 56px 20px; }
     .process-steps { grid-template-columns: 1fr; }
-    .hero-actions { flex-direction: column; align-items: center; }
+    .faq-question span { font-size: 15px; }
+    .context-text p { font-size: 15px; }
+    .eleg-card { padding: 28px 24px; }
+    .step { padding: 0 8px; }
+    .btn-quem-somos { width: 100%; justify-content: center; }
+    footer { padding: 32px 20px; }
+    .disclaimer-strip p { font-size: 12px; }
+  }
+
+  /* ---- QUEM SOMOS ---- */
+  .quem-somos {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(201,168,76,0.12);
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .quem-somos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .quem-somos-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .quem-somos-text h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .quem-somos-text p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .quem-somos-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 28px 0;
+    opacity: 0.6;
+  }
+
+  .advogados-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .advogado-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .advogado-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .advogado-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.3px;
+  }
+
+  .advogado-title {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .quem-somos-image {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+  }
+
+  .quem-somos-image::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60%;
+    background: radial-gradient(ellipse at bottom, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .team-photo {
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+    outline: 1px solid rgba(201,168,76,0.45);
+  }
+
+  .btn-quem-somos {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 11px 22px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-quem-somos:hover {
+    background: rgba(201,168,76,0.08);
+    border-color: rgba(201,168,76,0.6);
+  }
+
+  @media (max-width: 900px) {
+    .quem-somos-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .quem-somos-image {
+      order: -1;
+      justify-content: center;
+    }
+    .team-photo {
+      max-width: 72%;
+      width: 72%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .team-photo {
+      max-width: 80%;
+      width: 80%;
+    }
   }
 </style>
 </head>
@@ -753,7 +948,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- HEADER -->
 <header>
-  <img src="assets/Logo (2).png" alt="Squiapati Romano Chagas & Afonso Neto" class="logo-img">
+  <img src="assets/Logo (3).png" alt="Squiapati Romano Chagas & Afonso Neto" class="logo-img">
   <a href="#contato" class="header-cta">Falar com um advogado</a>
 </header>
 
@@ -765,22 +960,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-content">
       <div class="hero-eyebrow">
         <div class="eyebrow-line"></div>
-        <span>Direito Tributário · Previdência Privada</span>
+        <span>Decisão STF · Tema 1.214 · Dezembro 2024</span>
       </div>
-      <h1>Você herdou<br>previdência privada<br>nos últimos <em>5 anos?</em></h1>
+      <h1>Herdou previdência<br>privada e pagou<br>ITCMD? <em>Você tem<br>direito à restituição.</em></h1>
       <p class="hero-sub">
-        O STF decidiu, por unanimidade, que a cobrança de ITCMD sobre planos PGBL e VGBL é <strong style="color:var(--gold-light)">inconstitucional</strong>. 
-        Se você pagou esse imposto, tem direito à restituição. Nosso escritório cuida de todo o processo para você.
+        O STF declarou, por unanimidade, que essa cobrança é <strong style="color:var(--gold-light)">inconstitucional</strong>. Quem pagou nos últimos 5 anos pode reaver o valor — e nosso escritório cuida de tudo para você.
       </p>
       <div class="hero-actions">
         <a href="#contato" class="btn-primary">
-          Solicitar análise gratuita
+          Verificar meu direito gratuitamente
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="#entenda" class="btn-secondary">
-          Entender a tese jurídica
+          Como funciona a tese
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M6 11l4-4M6 11L2 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+      </div>
+      <div class="hero-trust-strip">
+        <span>✓ Análise gratuita</span>
+        <span class="trust-sep">·</span>
+        <span>✓ Sem compromisso</span>
+        <span class="trust-sep">·</span>
+        <span>✓ Válido em todo o Brasil</span>
       </div>
     </div>
 
@@ -979,11 +1180,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <form class="cta-form reveal" onsubmit="handleSubmit(event)">
       <div class="form-row">
-        <input type="text" class="form-input" placeholder="Seu nome" required>
-        <input type="tel" class="form-input" placeholder="WhatsApp" required>
+        <input type="text" name="nome" class="form-input" placeholder="Seu nome" autocomplete="name" required>
+        <input type="tel" name="whatsapp" class="form-input" placeholder="WhatsApp" autocomplete="tel" inputmode="tel" required>
       </div>
-      <input type="email" class="form-input" placeholder="Seu e-mail" required>
-      <select class="form-select">
+      <input type="email" name="email" class="form-input" placeholder="Seu e-mail" autocomplete="email" required>
+      <select name="periodo" class="form-select" required>
         <option value="">Quando ocorreu o recebimento da herança?</option>
         <option>Menos de 1 ano</option>
         <option>Entre 1 e 2 anos</option>
@@ -991,12 +1192,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <option>Entre 3 e 4 anos</option>
         <option>Entre 4 e 5 anos</option>
       </select>
+<select name="valor_plano" class="form-select">
+        <option value="">Valor aproximado do plano herdado? (opcional)</option>
+        <option>Até R$ 50 mil</option>
+        <option>R$ 50 mil – R$ 200 mil</option>
+        <option>R$ 200 mil – R$ 500 mil</option>
+        <option>Acima de R$ 500 mil</option>
+        <option>Não sei</option>
+      </select>
       <button type="submit" class="btn-primary" style="justify-content:center;">
         Enviar solicitação
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <p class="form-note">Seus dados são confidenciais e protegidos pelo sigilo profissional do advogado.</p>
     </form>
+  </div>
+</section>
+
+<!-- QUEM SOMOS SECTION -->
+<section class="quem-somos">
+  <div class="section-inner">
+    <div class="quem-somos-grid">
+
+      <div class="quem-somos-text">
+        <div class="section-label"><span>O escritório</span></div>
+        <h2 class="reveal">Advogados que <em>conhecem<br>cada detalhe</em> da tese</h2>
+        <div class="quem-somos-divider"></div>
+        <p class="reveal">O escritório Squiapati, Romano, Chagas & Afonso Neto é uma sociedade de advogados tributaristas com atuação focada em recuperação de tributos. Desde que o STF consolidou o entendimento sobre a inconstitucionalidade do ITCMD em planos de previdência privada, nossa equipe se especializou exclusivamente nessa tese — acompanhando cada fase do julgamento, dos embargos à rejeição da modulação.</p>
+        <p class="reveal">Atendemos clientes em todo o Brasil com análise criteriosa de cada caso, transparência nos honorários e compromisso com o resultado. Não trabalhamos com volume — trabalhamos com responsabilidade.</p>
+        <div class="advogados-list reveal">
+          <div class="advogado-item">
+            <div class="advogado-dot"></div>
+            <div class="advogado-name">Manoel Squiapati</div>
+          </div>
+          <div class="advogado-item">
+            <div class="advogado-dot"></div>
+            <div class="advogado-name">Bruno Chagas</div>
+          </div>
+          <div class="advogado-item">
+            <div class="advogado-dot"></div>
+            <div class="advogado-name">Victor Romano</div>
+          </div>
+        </div>
+        <a href="#contato" class="btn-quem-somos reveal">Falar com o escritório
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="quem-somos-image reveal">
+        <img src="assets/os 3.jpg" alt="Manoel Squiapati, Bruno Chagas e Victor Romano" class="team-photo">
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -1041,18 +1288,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Form Submit
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxnNVsVYeSNhMW40ewX-gZReZVGACth0CdP3gkF2MjdvB-pA9hLx4Rx_w938Yco4RZnjA/exec';
+
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
-    btn.textContent = '✓ Redirecionando...';
-    btn.style.background = '#2A7A4B';
-    btn.style.color = '#fff';
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+
+    btn.innerHTML = '⏳ Enviando...';
     btn.disabled = true;
-    
-    // Redireciona para a página de obrigado
-    setTimeout(() => {
+
+    const payload = {
+      nome:        form.nome.value.trim(),
+      whatsapp:    form.whatsapp.value.trim(),
+      email:       form.email.value.trim(),
+      periodo:     form.periodo.value,
+valor_plano: form.valor_plano.value
+    };
+
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      btn.innerHTML = '✓ Enviado!';
+      btn.style.background = '#2A7A4B';
+      btn.style.color = '#fff';
+      setTimeout(() => { window.location.href = 'obrigado.html'; }, 800);
+    })
+    .catch(() => {
+      // Redireciona mesmo em caso de erro de rede para não travar o usuário
       window.location.href = 'obrigado.html';
-    }, 800);
+    });
   }
 
   // Stagger reveal cards
